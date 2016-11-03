@@ -8,6 +8,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -17,142 +18,177 @@
             android:paddingTop="@dimen/activity_vertical_margin"
             tools:context="com.example.mpa.freelancer.Profile">
 
-            <ImageView
-                android:id="@+id/header_imageview"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                android:adjustViewBounds="true"
-                />
-
-            <!--Information that goes after the profile image-->
-            <LinearLayout
-                android:id="@+id/information_container"
+            <!-- A CardView that contains the skills -->
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/top_container"
+                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@+id/header_imageview"
-                android:gravity="center"
-                android:paddingTop="32dp"
-                android:paddingBottom="20dp">
+                card_view:cardElevation="3dp">
 
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/header_name"
-                    android:text="Mariana Prado"
-                    android:textSize="17dp"
-                    android:textColor="#38761d"/>
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/header_occupation"
-                    android:gravity="center"
-                    android:textColor="#FF707070"
-                    android:text="Web developer"/>
+                    <ImageView
+                        android:id="@+id/header_imageview"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/header_ratings"
-                    android:textColor="#FF909090"
-                    android:text="Ratings: "/>
+                    <!--Information that goes after the profile image-->
+                    <LinearLayout
+                        android:id="@+id/information_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_below="@+id/header_imageview"
+                        android:gravity="center"
+                        android:paddingTop="32dp"
+                        android:paddingBottom="20dp">
 
-            </LinearLayout>
 
-            <HorizontalScrollView
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/header_name"
+                            android:text="Mariana Prado"
+                            android:textSize="17dp"
+                            android:textColor="#38761d"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/header_occupation"
+                            android:gravity="center"
+                            android:textColor="#FF707070"
+                            android:text="Web developer"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/header_ratings"
+                            android:textColor="#FF909090"
+                            android:text="Ratings: "/>
+
+                    </LinearLayout>
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="none"
+                        android:layout_below="@+id/information_container"
+                        android:background="#70dc68"
+                        android:id="@+id/horizontalScrollView"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/horizontal_rate"
+                                android:layout_margin="20dp"
+                                android:textSize="15dp"
+                                android:textColor="#FFFFFFFF"/>
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                    <!--Profile image
+                    cheat code: negative margin -->
+                    <ImageView
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_above="@+id/information_container"
+                        android:layout_marginBottom="-16dp"
+                        android:id="@+id/imageView"
+                        />
+                    <!--android:src="@drawable/avatar"-->
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+            <!-- A CardView that contains the skills -->
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/skills_container"
+                android:layout_below="@+id/top_container"
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none"
-                android:layout_below="@+id/information_container"
-                android:background="#70dc68"
-                android:id="@+id/horizontalScrollView"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true">
+                card_view:cardElevation="2dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_below="@+id/horizontalScrollView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/horizontal_rate"
-                        android:layout_margin="20dp"
+                        android:id="@+id/header_skills_list"
+                        android:layout_margin="10dp"
+                        android:text="Skills"
                         android:textSize="15dp"
-                        android:textColor="#FFFFFFFF"/>
+                        android:textColor="#6aa84f"/>
+
+                    <ListView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/list_skills"
+                        android:layout_below="@+id/header_skills_list" />
 
                 </LinearLayout>
-            </HorizontalScrollView>
+            </android.support.v7.widget.CardView>
 
-            <!--Profile image
-            cheat code: negative margin -->
-            <ImageView
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:layout_centerHorizontal="true"
-                android:layout_above="@+id/information_container"
-                android:layout_marginBottom="-16dp"
-                android:id="@+id/imageView"
-                />
-            <!--android:src="@drawable/avatar"-->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/skills_container"
-                android:layout_below="@+id/horizontalScrollView"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/header_skills_list"
-                    android:layout_margin="10dp"
-                    android:text="Skills"
-                    android:textSize="15dp"
-                    android:textColor="#6aa84f"/>
-
-                <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/list_skills"
-                    android:layout_below="@+id/header_skills_list" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/reviews_container"
                 android:layout_below="@+id/skills_container"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:orientation="vertical">
+                android:layout_margin="8dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardElevation="2dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/header_reviews_list"
-                    android:layout_margin="10dp"
-                    android:text="Reviews"
-                    android:textSize="15dp"
-                    android:textColor="#6aa84f"/>
+                    android:layout_below="@+id/skills_container"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:orientation="vertical">
 
-                <ListView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/list_reviews"
-                    android:layout_below="@+id/header_skills_list" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/header_reviews_list"
+                        android:layout_margin="10dp"
+                        android:text="Reviews"
+                        android:textSize="15dp"
+                        android:textColor="#6aa84f"/>
 
-            </LinearLayout>
+                    <ListView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/list_reviews"
+                        android:layout_below="@+id/header_reviews_list" />
 
+                </LinearLayout>
 
+            </android.support.v7.widget.CardView>
 
         </RelativeLayout>
     </ScrollView>
