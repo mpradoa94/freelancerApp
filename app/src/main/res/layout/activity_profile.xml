@@ -102,15 +102,14 @@
                         </LinearLayout>
                     </HorizontalScrollView>
 
-                    <!--Profile image
-                    cheat code: negative margin -->
+                    <!--Profile image. Cheat code: negative margin -->
                     <ImageView
                         android:layout_width="130dp"
                         android:layout_height="130dp"
+                        android:id="@+id/profile_image"
                         android:layout_centerHorizontal="true"
                         android:layout_above="@+id/information_container"
                         android:layout_marginBottom="-16dp"
-                        android:id="@+id/imageView"
                         />
                     <!--android:src="@drawable/avatar"-->
                 </RelativeLayout>
@@ -125,7 +124,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                card_view:cardElevation="2dp">
+                card_view:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -161,7 +160,7 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                card_view:cardElevation="2dp">
+                card_view:cardElevation="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
