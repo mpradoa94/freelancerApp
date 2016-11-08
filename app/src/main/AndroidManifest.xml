@@ -27,19 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         <activity android:name=".login"></activity>
-=======
         <activity android:name=".EditProfile"></activity>
->>>>>>> origin/profileLayouts
-=======
-        <activity android:name=".EditProfile"></activity>
->>>>>>> origin/profileLayouts
-=======
         <activity android:name=".register"></activity>
->>>>>>> origin/register
     </application>
 
 </manifest>
