@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.4.0_780f4faff9032a91b0f236cda111ed329671a021\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-21.0.3_468bc6b2b3094c4a91f7b6697f0d343faabce299\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\libs\internal_impl-23.4.0.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.4.0_c41ffcb9e294cfa647b2cb5fc07c59ab3804b647\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="6c8e164d1b2d7018ea1782ee8c70496951670b73">
+        <dex dex="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_1848e10e31d9e9e5265edefec5ed6b957834b873\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.4.0_9096ad57340265f5ccee59142283674236c0507c\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.3\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
+        <dex dex="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-21.0.3_d1459e6db4cb55dc15d68ff6c8ebe6e8a562593b\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.4.0_d85faa1c28e627cbb439dea49045a51e520360a5\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\MPA\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.4.0\support-annotations-23.4.0.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.4.0_7e054ddadb082a275e8b27e4537875c4a3687af2\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="454a28f532c5e99f3e80e1a5e1cc1b9e1a7569b5">
+        <dex dex="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_6014ead8f60efc49d6e8992152020d0683ac1da2\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="C:\Users\MPA\Documents\TEC\9semestre\Moviles\Freelancer\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.4.0_01d2dcccd2b2d1c4b242a8e2f07aead16415777a\classes.dex" />
+    </item>
+
+</items>
