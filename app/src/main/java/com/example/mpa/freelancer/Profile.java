@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -18,16 +19,21 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class Profile extends AppCompatActivity {
 
     ImageView imageView;
+    TextView name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        name = (TextView) findViewById(R.id.header_name);
 
         //Make the profile image round
         ImageView profileImg = (ImageView)findViewById(R.id.profile_image);
@@ -40,23 +46,29 @@ public class Profile extends AppCompatActivity {
         profileImg.setImageDrawable(roundedBitmapDrawable);
 
 
-        // Query test using parse
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if(currentUser != null){
+            String namee = currentUser.getUsername();
+            name.setText(namee);
+;        }
+
+        /* Query test using parse
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> users, ParseException e) {
                 if(e == null){
-                    Log.i("Profile", "Users"+ users.size());
                     Toast.makeText(Profile.this, "Profiles: " + users.get(0).getString("email"), Toast.LENGTH_LONG).show();
+                    String nombreusr;
+                    nombreusr = user.getString("username");
+                    name.setText(nombreusr);
                 }
                 else{
                     e.printStackTrace();
-                    Log.i("Profile", "No jala esta madre");
-                    Toast.makeText(Profile.this, "Profiles: No jala", Toast.LENGTH_LONG).show();
                 }
             }
-        });
+        });*/
 
 
     }
