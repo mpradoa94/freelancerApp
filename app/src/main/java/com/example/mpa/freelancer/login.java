@@ -12,6 +12,10 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class login extends AppCompatActivity {
 
     Button login;
@@ -45,6 +49,12 @@ public class login extends AppCompatActivity {
                     public void done(ParseUser user, ParseException e) {
                         if(user != null){
                             Intent intent = new Intent(login.this, Profile.class);
+                            /*
+                            List<String> skills = new ArrayList<String>();
+                            skills.add("Si");
+                            skills.add("No");
+                            user.put("skills", skills);
+                            */
                             startActivity(intent);
                             Toast.makeText(login.this, "Logged in", Toast.LENGTH_LONG).show();
                             finish();
