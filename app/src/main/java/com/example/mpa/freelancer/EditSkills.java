@@ -82,6 +82,7 @@ public class EditSkills extends AppCompatActivity {
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Toast.makeText(EditSkills.this, "Still not fully available", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(EditSkills.this, EditProfile.class);
                 startActivity(intent);
             }

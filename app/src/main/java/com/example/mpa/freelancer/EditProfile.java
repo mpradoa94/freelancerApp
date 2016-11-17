@@ -11,6 +11,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,6 @@ import java.util.ArrayList;
 public class EditProfile extends AppCompatActivity {
     private RecyclerView recyclerViewSkills;
     private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     Context context;
 
@@ -44,6 +44,9 @@ public class EditProfile extends AppCompatActivity {
 
         context = getApplicationContext();
         recyclerViewSkills = (RecyclerView) findViewById(R.id.list_skills);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerViewSkills.setLayoutManager(layoutManager);
 
         name = (TextView) findViewById(R.id.header_name);
         occupation = (TextView) findViewById(R.id.header_occupation);

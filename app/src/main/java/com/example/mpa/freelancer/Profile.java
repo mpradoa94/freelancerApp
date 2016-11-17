@@ -1,5 +1,6 @@
 package com.example.mpa.freelancer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -9,6 +10,8 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,19 +30,31 @@ import com.parse.ParseUser;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Profile extends AppCompatActivity {
+    private RecyclerView recyclerViewSkills;
+    private RecyclerView.Adapter mAdapter;
 
-    ImageView imageView;
+    Context context;
+
     TextView name;
     TextView occupation;
+    ArrayList<String> skills;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        context = getApplicationContext();
+        recyclerViewSkills = (RecyclerView) findViewById(R.id.list_skills);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerViewSkills.setLayoutManager(layoutManager);
+        recyclerViewSkills.setNestedScrollingEnabled(false);
 
         name = (TextView) findViewById(R.id.header_name);
         occupation = (TextView) findViewById(R.id.header_occupation);
@@ -60,10 +75,17 @@ public class Profile extends AppCompatActivity {
             String namee = currentUser.getUsername();
             name.setText(namee);
             Object oc = currentUser.get("ocupation");
+            Object sk = currentUser.get("skills");
             if(oc != null) {
                 String ocupationn = oc.toString();
                 occupation.setText(ocupationn);
             }
+            if(sk != null){
+                skills = (ArrayList<String>)sk;
+            }
+
+            mAdapter = new SkillsAdapter(skills);
+            recyclerViewSkills.setAdapter(mAdapter);
 
             CardView layout = (CardView)findViewById(R.id.top_container);
 
