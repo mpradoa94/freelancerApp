@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mpa.freelancer">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"  />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!--I changed it to test my view but we have to define the view that appears at lauch later-->
+    <!-- I changed it to test my view but we have to define the view that appears at lauch later -->
     <application
         android:name=".ParseApplication"
         android:allowBackup="true"
@@ -23,9 +23,8 @@
             </intent-filter>
             -->
         </activity>
-
-
         <activity android:name=".register">
+
             <!-- </activity> -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,21 +32,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".login" />
+        <activity android:name=".Profile" />
+        <activity android:name=".EditProfile" />
+        <!-- <activity android:name=".register"></activity> -->
 
-        <activity android:name=".login"></activity>
-        <activity android:name=".Profile"></activity>
-        <activity android:name=".EditProfile"></activity>
-       <!-- <activity android:name=".register"></activity> -->
 
-    <!-- <meta-data
+        <!--
+         <meta-data
             android:name="com.parse.APPLICATION_ID"
             android:value="vy6ZcwiJIdQmApaVslMdJXkeiK9xbNH7Ni35ATWQ" />
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="KaNrovlikvnVHzJoXvcL98uqUQYe7wEYeDo9wQsX" />
+        -->
 
-     -->
-
+        <activity android:name=".search"></activity>
     </application>
 
 </manifest>
