@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,11 +51,11 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         context = getApplicationContext();
+
         recyclerViewSkills = (RecyclerView) findViewById(R.id.list_skills);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewSkills.setLayoutManager(layoutManager);
-        recyclerViewSkills.setNestedScrollingEnabled(false);
 
         name = (TextView) findViewById(R.id.header_name);
         occupation = (TextView) findViewById(R.id.header_occupation);
