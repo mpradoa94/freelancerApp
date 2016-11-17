@@ -48,6 +48,7 @@
         -->
 
         <activity android:name=".search"></activity>
+        <activity android:name=".EditSkills"></activity>
     </application>
 
 </manifest>

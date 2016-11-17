@@ -3,11 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    tools:context="com.example.mpa.freelancer.EditProfile">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:paddingBottom="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -15,8 +18,7 @@
             android:paddingBottom="@dimen/activity_vertical_margin"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            tools:context="com.example.mpa.freelancer.Profile">
+            android:paddingTop="@dimen/activity_vertical_margin">
 
             <!-- A CardView that contains the skills -->
             <android.support.v7.widget.CardView
@@ -130,6 +132,17 @@
                         android:layout_marginBottom="-16dp"
                         android:clickable="true"/>
 
+                    <Button
+                        android:layout_width="300px"
+                        android:layout_height="100px"
+                        android:text="Save Profile"
+                        android:id="@+id/btnSave"
+                        android:textColor="#FFFFFFFF"
+                        android:background="#70dc68"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
 
@@ -144,19 +157,18 @@
                 android:layout_height="wrap_content"
                 card_view:cardElevation="1dp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/horizontalScrollView"
                     android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:orientation="vertical">
+                    android:layout_alignParentStart="true">
 
                     <!--Skills header-->
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true">
+                        android:id="@+id/relativeLayoutSkills_header">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -178,15 +190,18 @@
                             android:adjustViewBounds="true"/>
                     </RelativeLayout>
 
-                    <ListView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <android.support.v7.widget.RecyclerView
                         android:id="@+id/list_skills"
-                        android:layout_below="@+id/header_skills_list" />
+                        android:scrollbars="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/relativeLayoutSkills_header"/>
 
-                </LinearLayout>
+                </RelativeLayout>
+
+
             </android.support.v7.widget.CardView>
-
         </RelativeLayout>
+
     </ScrollView>
 </RelativeLayout>
