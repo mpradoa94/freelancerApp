@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.parse.FindCallback;
 import com.parse.Parse;
@@ -37,7 +38,10 @@ public class search extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         users = new ArrayList<>();
 
+        final ParseUser currentUser = ParseUser.getCurrentUser();
+
         ParseQuery<ParseUser> query = ParseUser.getQuery();
+        query.whereNotEqualTo("email", currentUser.getEmail().toString());
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> userObjects, ParseException error) {
