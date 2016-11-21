@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-//Adapter for skill recycleView
+//Adapter for recycleView
 public class SkillsAdapter extends RecyclerView.Adapter<SkillsAdapter.ViewHolder> {
     private ArrayList<String> items;
 
