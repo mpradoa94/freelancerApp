@@ -48,7 +48,7 @@ public class login extends AppCompatActivity {
                     @Override
                     public void done(ParseUser user, ParseException e) {
                         if(user != null){
-                            Intent intent = new Intent(login.this, search.class);
+                            Intent intent = new Intent(login.this, Profile.class);
                             /*
                             List<String> skills = new ArrayList<String>();
                             skills.add("Si");

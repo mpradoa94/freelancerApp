@@ -47,8 +47,12 @@
             android:value="KaNrovlikvnVHzJoXvcL98uqUQYe7wEYeDo9wQsX" />
         -->
 
-        <activity android:name=".search"></activity>
-        <activity android:name=".EditSkills"></activity>
+        <activity android:name=".search" />
+        <activity android:name=".EditSkills" />
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
