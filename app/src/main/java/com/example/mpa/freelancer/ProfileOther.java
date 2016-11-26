@@ -1,5 +1,6 @@
 package com.example.mpa.freelancer;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +22,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ProfileOther extends Fragment {
@@ -36,9 +40,9 @@ public class ProfileOther extends Fragment {
     TextView name;
     TextView occupation;
     ArrayList<String> skills;
-    List<ParseObject> users;
+    List<ParseUser> users;
 
-    String emailUser;
+    String User;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -48,8 +52,6 @@ public class ProfileOther extends Fragment {
         recyclerViewSkills = (RecyclerView) rLayout.findViewById(R.id.list_skills);
         mLayoutManager = new LinearLayoutManager(super.getActivity());
         recyclerViewSkills.setLayoutManager(mLayoutManager);
-
-        users = new ArrayList<>();
 
         name = (TextView) rLayout.findViewById(R.id.header_name);
         occupation = (TextView) rLayout.findViewById(R.id.header_occupation);
@@ -65,29 +67,24 @@ public class ProfileOther extends Fragment {
         profileImg.setImageDrawable(roundedBitmapDrawable);
 
         //Getting user email from the list
-        Intent intent = getActivity().getIntent();
-        if (intent.getExtras() != null) {
-            emailUser = intent.getStringExtra("Email");
-        }
+        Bundle bundle = getArguments();
+        User = bundle.getString("Id");
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
-        query.whereEqualTo("Email", emailUser);
-        query.findInBackground(new FindCallback<ParseUser>() {
-            public void done(List<ParseUser> objects, ParseException e) {
-                if (e == null) {
-                    // The query was successful.
-                    for (int i = 0; i < objects.size(); i++) {
-                        users.add(objects.get(i));
-                        Toast.makeText(getActivity(), "Found user", Toast.LENGTH_SHORT);
-                    }
-                } else {
-                    // Something went wrong.
-                }
-            }
-        });
+        query.whereEqualTo("objectId", User);
+        //query.selectKeys(Arrays.asList("username", "ocupation", "skills", "reviews"));
+        try {
+            users = query.find();
+            Log.e("User", users.get(0).toString());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
-        if(users != null && users.size() < 2 && users.size() > 0){
-            String namee = users.get(0).get("Username").toString();
+        Toast.makeText(getActivity(),  users.get(0).getUsername().toString(), Toast.LENGTH_SHORT).show();
+
+        if(users != null){
+            Log.e("User", users.get(0).toString());
+            String namee = users.get(0).getUsername().toString();
             name.setText(namee);
             Object oc = users.get(0).get("ocupation");
             Object sk = users.get(0).get("skills");
@@ -109,8 +106,6 @@ public class ProfileOther extends Fragment {
 
             mAdapter = new SkillsAdapter(skills);
             recyclerViewSkills.setAdapter(mAdapter);
-
-            CardView layout = (CardView)rLayout.findViewById(R.id.top_container);
 
         }
 

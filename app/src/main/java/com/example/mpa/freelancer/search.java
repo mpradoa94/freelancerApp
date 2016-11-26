@@ -75,14 +75,15 @@ public class search extends Fragment {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 Bundle user = new Bundle();
-                user.putString("Email", users.get(position).getEmail());
+                user.putString("Id", users.get(position).getObjectId());
 
                 Fragment profileOtherFragment = new ProfileOther();
                 profileOtherFragment.setArguments(user);
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                transaction.replace(R.id.contentMenu, profileOtherFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                FragmentManager manager = getFragmentManager();
+                manager.beginTransaction()
+                        .replace(R.id.contentMenu, profileOtherFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
