@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseUser;
@@ -51,6 +52,16 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.contentMenu, searchFragment, searchFragment.getTag()).commit();
         navigationView.setNavigationItemSelectedListener(this);
+
+        //Get nav header view
+        View navHeaderView = navigationView.inflateHeaderView(R.layout.nav_header_menu);
+        //Get text to put user name
+        TextView name = (TextView) navHeaderView.findViewById(R.id.textNameMenu);
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if(currentUser != null) {
+            String namee = currentUser.getUsername();
+            name.setText(namee);
+        }
     }
 
     @Override
