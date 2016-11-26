@@ -34,12 +34,16 @@ import java.util.List;
 
 public class ProfileOther extends Fragment {
     private RecyclerView recyclerViewSkills;
+    private RecyclerView recyclerViewReviews;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView.Adapter mAdapter2;
+    private RecyclerView.LayoutManager mLayoutManager2;
 
     TextView name;
     TextView occupation;
     ArrayList<String> skills;
+    ArrayList<String> reviews;
     List<ParseUser> users;
 
     String User;
@@ -50,8 +54,13 @@ public class ProfileOther extends Fragment {
         RelativeLayout rLayout = (RelativeLayout) inflater.inflate(R.layout.activity_profile_other, container, false);
 
         recyclerViewSkills = (RecyclerView) rLayout.findViewById(R.id.list_skills);
+        recyclerViewReviews = (RecyclerView) rLayout.findViewById(R.id.list_reviews);
+
         mLayoutManager = new LinearLayoutManager(super.getActivity());
+        mLayoutManager2 = new LinearLayoutManager(super.getActivity());
+
         recyclerViewSkills.setLayoutManager(mLayoutManager);
+        recyclerViewReviews.setLayoutManager(mLayoutManager2);
 
         name = (TextView) rLayout.findViewById(R.id.header_name);
         occupation = (TextView) rLayout.findViewById(R.id.header_occupation);
@@ -80,14 +89,13 @@ public class ProfileOther extends Fragment {
             e.printStackTrace();
         }
 
-        Toast.makeText(getActivity(),  users.get(0).getUsername().toString(), Toast.LENGTH_SHORT).show();
-
         if(users != null){
             Log.e("User", users.get(0).toString());
             String namee = users.get(0).getUsername().toString();
             name.setText(namee);
             Object oc = users.get(0).get("ocupation");
             Object sk = users.get(0).get("skills");
+            Object rw = users.get(0).get("reviews");
             if(oc != null) {
                 String ocupationn = oc.toString();
                 occupation.setText(ocupationn);
@@ -99,13 +107,24 @@ public class ProfileOther extends Fragment {
                 skills = (ArrayList<String>)sk;
             }
             else {
-                ArrayList<String> list = new ArrayList<String>();
-                list.add("No skills added");
+                ArrayList<String> list = new ArrayList<>();
+                list.add("No skills");
                 skills = list;
+            }
+            if(rw != null){
+                reviews = (ArrayList<String>) rw;
+            }
+            else {
+                ArrayList<String> list = new ArrayList<>();
+                list.add("No reviews yet");
+                reviews = list;
             }
 
             mAdapter = new SkillsAdapter(skills);
+            mAdapter2 = new ReviewsAdapter(reviews);
+
             recyclerViewSkills.setAdapter(mAdapter);
+            recyclerViewReviews.setAdapter(mAdapter2);
 
         }
 

@@ -29,13 +29,18 @@ import java.util.ArrayList;
 
 public class Profile extends Fragment {
     private RecyclerView recyclerViewSkills;
+    private RecyclerView recyclerViewReviews;
     private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private RecyclerView.Adapter mAdapter2;
+    private RecyclerView.LayoutManager mLayoutManager2;
 
-    Context context;
 
     TextView name;
     TextView occupation;
+
     ArrayList<String> skills;
+    ArrayList<String> reviews;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,9 +48,13 @@ public class Profile extends Fragment {
         RelativeLayout rLayout = (RelativeLayout) inflater.inflate(R.layout.activity_profile, container, false);
 
         recyclerViewSkills = (RecyclerView) rLayout.findViewById(R.id.list_skills);
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerViewSkills.setLayoutManager(layoutManager);
+        recyclerViewReviews = (RecyclerView) rLayout.findViewById(R.id.list_reviews);
+
+        mLayoutManager = new LinearLayoutManager(super.getActivity());
+        mLayoutManager2 = new LinearLayoutManager(super.getActivity());
+
+        recyclerViewSkills.setLayoutManager(mLayoutManager);
+        recyclerViewReviews.setLayoutManager(mLayoutManager2);
 
         name = (TextView) rLayout.findViewById(R.id.header_name);
         occupation = (TextView) rLayout.findViewById(R.id.header_occupation);
@@ -67,13 +76,37 @@ public class Profile extends Fragment {
             name.setText(namee);
             Object oc = currentUser.get("ocupation");
             Object sk = currentUser.get("skills");
+            Object rw = currentUser.get("reviews");
+
             if(oc != null) {
                 String ocupationn = oc.toString();
                 occupation.setText(ocupationn);
             }
+            else {
+                occupation.setText("");
+            }
             if(sk != null){
                 skills = (ArrayList<String>)sk;
             }
+            else {
+                ArrayList<String> list = new ArrayList<>();
+                list.add("No skills");
+                skills = list;
+            }
+            if(rw != null){
+                reviews = (ArrayList<String>) rw;
+            }
+            else {
+                ArrayList<String> list = new ArrayList<>();
+                list.add("No reviews yet");
+                reviews = list;
+            }
+
+            mAdapter = new SkillsAdapter(skills);
+            mAdapter2 = new ReviewsAdapter(reviews);
+
+            recyclerViewSkills.setAdapter(mAdapter);
+            recyclerViewReviews.setAdapter(mAdapter2);
 
             mAdapter = new SkillsAdapter(skills);
             recyclerViewSkills.setAdapter(mAdapter);
