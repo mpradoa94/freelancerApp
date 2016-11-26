@@ -18,8 +18,7 @@ import android.widget.Toast;
 
 import com.parse.ParseUser;
 
-public class MenuActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MenuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +43,13 @@ public class MenuActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        //Set the search as selected in the beginning
+        navigationView.setCheckedItem(R.id.nav_search);
+        //Load the fragment
+        search searchFragment = new search();
+        FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.contentMenu, searchFragment, searchFragment.getTag()).commit();
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -82,6 +88,7 @@ public class MenuActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
