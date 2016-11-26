@@ -1,5 +1,6 @@
 package com.example.mpa.freelancer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.parse.ParseUser;
 
 public class MenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -93,6 +97,14 @@ public class MenuActivity extends AppCompatActivity
             EditProfile editProfileFragment = new EditProfile();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.contentMenu, editProfileFragment, editProfileFragment.getTag()).commit();
+        }
+        else if (id == R.id.nav_logout) {
+            ParseUser.logOut();
+            ParseUser currentUser = ParseUser.getCurrentUser();
+            invalidateOptionsMenu();
+            Toast.makeText(getApplicationContext(), "Good bye...", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MenuActivity.this, login.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -115,9 +115,9 @@ public class EditProfile extends Fragment {
             btnSkills.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
-                    Fragment profileFragment = new Profile();
+                    Fragment skillsFragment = new EditSkills();
                     FragmentTransaction transaction = getFragmentManager().beginTransaction();
-                    transaction.replace(R.id.contentMenu, profileFragment);
+                    transaction.replace(R.id.contentMenu, skillsFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
                 }

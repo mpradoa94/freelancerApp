@@ -49,12 +49,6 @@ public class login extends AppCompatActivity {
                     public void done(ParseUser user, ParseException e) {
                         if(user != null){
                             Intent intent = new Intent(login.this, MenuActivity.class);
-                            /*
-                            List<String> skills = new ArrayList<String>();
-                            skills.add("Si");
-                            skills.add("No");
-                            user.put("skills", skills);
-                            */
                             startActivity(intent);
                             Toast.makeText(login.this, "Logged in", Toast.LENGTH_LONG).show();
                             finish();
