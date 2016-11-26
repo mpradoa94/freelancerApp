@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AlertDialog;
@@ -13,22 +16,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
 
-public class EditProfile extends AppCompatActivity {
+public class EditProfile extends Fragment {
     private RecyclerView recyclerViewSkills;
     private RecyclerView.Adapter mAdapter;
-
-    Context context;
+    private RecyclerView.LayoutManager mLayoutManager;
 
     TextView name;
     TextView occupation;
@@ -38,24 +43,22 @@ public class EditProfile extends AppCompatActivity {
     ArrayList<String> skills;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final FragmentActivity faActivity = (FragmentActivity) super.getActivity();
+        RelativeLayout rLayout = (RelativeLayout) inflater.inflate(R.layout.activity_edit_profile, container, false);
 
-        context = getApplicationContext();
-        recyclerViewSkills = (RecyclerView) findViewById(R.id.list_skills);
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(context);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerViewSkills.setLayoutManager(layoutManager);
+        recyclerViewSkills = (RecyclerView) rLayout.findViewById(R.id.list_skills);
+        mLayoutManager = new LinearLayoutManager(super.getActivity());
+        recyclerViewSkills.setLayoutManager(mLayoutManager);
 
-        name = (TextView) findViewById(R.id.header_name);
-        occupation = (TextView) findViewById(R.id.header_occupation);
-        btnSkills = (ImageButton) findViewById(R.id.edit_skills_list);
-        btnOccupation = (ImageButton) findViewById(R.id.edit_occupation);
-        saveProfile = (Button) findViewById(R.id.btnSave);
+        name = (TextView) rLayout.findViewById(R.id.header_name);
+        occupation = (TextView) rLayout.findViewById(R.id.header_occupation);
+        btnSkills = (ImageButton) rLayout.findViewById(R.id.edit_skills_list);
+        btnOccupation = (ImageButton) rLayout.findViewById(R.id.edit_occupation);
+        saveProfile = (Button) rLayout.findViewById(R.id.btnSave);
 
         //Make the profile image round
-        ImageView profileImg = (ImageView)findViewById(R.id.profile_image);
+        ImageView profileImg = (ImageView)rLayout.findViewById(R.id.profile_image);
         //get bitmap of the image
         Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),  R.drawable.default_user);
         RoundedBitmapDrawable roundedBitmapDrawable= RoundedBitmapDrawableFactory.create(getResources(), imageBitmap);
@@ -83,10 +86,10 @@ public class EditProfile extends AppCompatActivity {
             btnOccupation.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(EditProfile.this);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
                     builder.setTitle("Edit occupation");
-                    final EditText TextInput = new EditText(context);
+                    final EditText TextInput = new EditText(getActivity());
                     TextInput.setTextColor(Color.parseColor("#000000"));
                     builder.setView(TextInput);
 
@@ -111,17 +114,28 @@ public class EditProfile extends AppCompatActivity {
 
             btnSkills.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(EditProfile.this, EditSkills.class);
-                    startActivity(intent);
+
+                    Fragment profileFragment = new Profile();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.contentMenu, profileFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 }
             });
 
             saveProfile.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    Intent intent = new Intent(EditProfile.this, Profile.class);
-                    startActivity(intent);
+                    // replace the current Fragment with the profile fragment and
+                    // push transaction onto the backstack to preserve the back button behavior
+                    Fragment profileFragment = new Profile();
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.contentMenu, profileFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
                 }
             });
         }
+
+        return rLayout;
     }
 }

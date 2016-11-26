@@ -90,7 +90,9 @@ public class MenuActivity extends AppCompatActivity
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.contentMenu, profileFragment, profileFragment.getTag()).commit();
         } else if (id == R.id.nav_edit_profile) {
-
+            EditProfile editProfileFragment = new EditProfile();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.contentMenu, editProfileFragment, editProfileFragment.getTag()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
