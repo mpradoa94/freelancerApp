@@ -38,9 +38,7 @@ public class search extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FragmentActivity faActivity = (FragmentActivity) super.getActivity();
-        // Replace LinearLayout by the type of the root element of the layout you're trying to load
         RelativeLayout rLayout = (RelativeLayout) inflater.inflate(R.layout.activity_search, container, false);
-        // Of course you will want to faActivity and llLayout in the class and not this method to access them in the rest of
 
         mRecyclerView = (RecyclerView) rLayout.findViewById(R.id.users_recycler_view);
         mLayoutManager = new LinearLayoutManager(super.getActivity());

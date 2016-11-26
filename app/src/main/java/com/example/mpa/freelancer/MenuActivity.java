@@ -84,10 +84,12 @@ public class MenuActivity extends AppCompatActivity
         if (id == R.id.nav_search) {
             search searchFragment = new search();
             FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.contentMenu, searchFragment).commit();
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+            manager.beginTransaction().replace(R.id.contentMenu, searchFragment, searchFragment.getTag()).commit();
+        } else if (id == R.id.nav_profile) {
+            Profile profileFragment = new Profile();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.contentMenu, profileFragment, profileFragment.getTag()).commit();
+        } else if (id == R.id.nav_edit_profile) {
 
         }
 

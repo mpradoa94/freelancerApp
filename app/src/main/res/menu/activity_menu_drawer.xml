@@ -12,11 +12,11 @@
     <item android:title="My account">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_profile"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Profile" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_edit_profile"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Edit profile" />
             <item
