@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -18,11 +19,13 @@ import java.util.List;
 
 //Adapter for recycleView
 public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHolder> {
-    private ArrayList<String> items;
+    private List<ParseObject> items;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item has an image, the user name and occupation
         public TextView textReview;
+        public TextView ratings;
+        public TextView nameReviewer;
 
         public Bitmap imageBitmap;
         public RoundedBitmapDrawable roundedBitmapDrawable;
@@ -30,11 +33,13 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
         public ViewHolder(View v) {
             super(v);
             textReview = (TextView) v.findViewById(R.id.review_text);
+            nameReviewer = (TextView) v.findViewById(R.id.name_reviewer);
+            ratings = (TextView) v.findViewById(R.id.rating);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ReviewsAdapter(ArrayList<String> items) {
+    public ReviewsAdapter(List<ParseObject> items) {
         this.items = items;
     }
 
@@ -65,6 +70,8 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         //Make the profile image round
-        holder.textReview.setText(items.get(position));
+        holder.textReview.setText(items.get(position).get("Review").toString());
+        holder.nameReviewer.setText(items.get(position).get("ReviewerName").toString());
+        holder.ratings.setText(items.get(position).get("Rating").toString());
     }
 }

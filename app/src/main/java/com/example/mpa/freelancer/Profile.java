@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +24,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Profile extends Fragment {
     private RecyclerView recyclerViewSkills;
@@ -35,12 +40,12 @@ public class Profile extends Fragment {
     private RecyclerView.Adapter mAdapter2;
     private RecyclerView.LayoutManager mLayoutManager2;
 
+    List<ParseObject> reviews;
 
     TextView name;
     TextView occupation;
 
     ArrayList<String> skills;
-    ArrayList<String> reviews;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -76,7 +81,6 @@ public class Profile extends Fragment {
             name.setText(namee);
             Object oc = currentUser.get("ocupation");
             Object sk = currentUser.get("skills");
-            Object rw = currentUser.get("reviews");
 
             if(oc != null) {
                 String ocupationn = oc.toString();
@@ -93,17 +97,20 @@ public class Profile extends Fragment {
                 list.add("No skills");
                 skills = list;
             }
-            if(rw != null){
-                reviews = (ArrayList<String>) rw;
+
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("Reviews");
+            query.whereEqualTo("UserId", currentUser);
+            try {
+                reviews = query.find();
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-            else {
-                ArrayList<String> list = new ArrayList<>();
-                list.add("No reviews yet");
-                reviews = list;
+
+            if(reviews != null){
+                mAdapter2 = new ReviewsAdapter(reviews);
             }
 
             mAdapter = new SkillsAdapter(skills);
-            mAdapter2 = new ReviewsAdapter(reviews);
 
             recyclerViewSkills.setAdapter(mAdapter);
             recyclerViewReviews.setAdapter(mAdapter2);

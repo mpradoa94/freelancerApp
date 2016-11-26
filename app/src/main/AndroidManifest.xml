@@ -32,7 +32,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".login" />
-
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"

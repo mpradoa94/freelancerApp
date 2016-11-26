@@ -186,6 +186,17 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/header_reviews_list"/>
 
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/addReviewbtn"
+                        android:text="Add review"
+                        android:textColor="#70dc68"
+                        android:background="@android:color/transparent"
+                        android:layout_below="@+id/list_reviews"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="10dp"/>
+
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
