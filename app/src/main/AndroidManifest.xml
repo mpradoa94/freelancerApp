@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <!-- I changed it to test my view but we have to define the view that appears at lauch later -->
     <application
         android:name=".ParseApplication"
         android:allowBackup="true"
@@ -33,26 +32,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".login" />
-        <activity android:name=".Profile" />
-        <activity android:name=".EditProfile" />
-        <!-- <activity android:name=".register"></activity> -->
 
-
-        <!--
-         <meta-data
-            android:name="com.parse.APPLICATION_ID"
-            android:value="vy6ZcwiJIdQmApaVslMdJXkeiK9xbNH7Ni35ATWQ" />
-        <meta-data
-            android:name="com.parse.CLIENT_KEY"
-            android:value="KaNrovlikvnVHzJoXvcL98uqUQYe7wEYeDo9wQsX" />
-        -->
-
-        <activity android:name=".search" />
-        <activity android:name=".EditSkills" />
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

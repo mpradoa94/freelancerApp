@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -68,6 +70,21 @@ public class search extends Fragment {
             mAdapter = new UsersAdapter(users);
             mRecyclerView.setAdapter(mAdapter);
         }
+
+        ItemClickSupport.addTo(mRecyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Bundle user = new Bundle();
+                user.putString("Email", users.get(position).getEmail());
+
+                Fragment profileOtherFragment = new ProfileOther();
+                profileOtherFragment.setArguments(user);
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.contentMenu, profileOtherFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
 
         return rLayout;
     }
