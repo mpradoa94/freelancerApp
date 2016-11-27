@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -47,6 +48,9 @@ public class Profile extends Fragment {
 
     ArrayList<String> skills;
 
+    RatingBar ratings;
+    int ratingAvg;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FragmentActivity faActivity = (FragmentActivity) super.getActivity();
@@ -63,6 +67,10 @@ public class Profile extends Fragment {
 
         name = (TextView) rLayout.findViewById(R.id.header_name);
         occupation = (TextView) rLayout.findViewById(R.id.header_occupation);
+
+        ratings = (RatingBar) rLayout.findViewById(R.id.header_rating_bar);
+
+        ratingAvg = 0;
 
         //Make the profile image round
         ImageView profileImg = (ImageView)rLayout.findViewById(R.id.profile_image);
@@ -108,8 +116,15 @@ public class Profile extends Fragment {
 
             if(reviews != null){
                 mAdapter2 = new ReviewsAdapter(reviews);
+                if(reviews.size() > 0) {
+                    for (int i = 0; i < reviews.size(); i++) {
+                        ratingAvg += (int) reviews.get(i).get("Rating");
+                    }
+                    ratingAvg = Math.round(ratingAvg / reviews.size());
+                }
             }
 
+            ratings.setRating(ratingAvg);
             mAdapter = new SkillsAdapter(skills);
 
             recyclerViewSkills.setAdapter(mAdapter);

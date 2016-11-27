@@ -155,13 +155,15 @@ public class ProfileOther extends Fragment {
             }
             if(reviews != null) {
                 mAdapter2 = new ReviewsAdapter(reviews);
-                for (int i = 0; i < reviews.size(); i++){
-                    ratingAvg += (int) reviews.get(i).get("Rating");
+                if (reviews.size() > 0) {
+                    for (int i = 0; i < reviews.size(); i++) {
+                        ratingAvg += (int) reviews.get(i).get("Rating");
+                    }
+                    ratingAvg = Math.round(ratingAvg / reviews.size());
                 }
-                ratingAvg = Math.round(ratingAvg/reviews.size());
-                ratings.setRating(ratingAvg);
             }
 
+            ratings.setRating(ratingAvg);
             mAdapter = new SkillsAdapter(skills);
 
             recyclerViewSkills.setAdapter(mAdapter);
