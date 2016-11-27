@@ -54,7 +54,7 @@ public class EditSkills extends Fragment {
                 skills = (ArrayList<String>)s;
         }
 
-        mAdapter = new SkillsAdapter(skills);
+        mAdapter = new EditSkillsAdapter(skills);
         mRecyclerView.setAdapter(mAdapter);
 
         btnAddSkill.setOnClickListener(new View.OnClickListener() {
