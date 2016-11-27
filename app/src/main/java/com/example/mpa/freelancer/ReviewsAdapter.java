@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.parse.ParseObject;
@@ -24,7 +25,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item has an image, the user name and occupation
         public TextView textReview;
-        public TextView ratings;
+        public RatingBar ratings;
         public TextView nameReviewer;
 
         public Bitmap imageBitmap;
@@ -34,7 +35,7 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
             super(v);
             textReview = (TextView) v.findViewById(R.id.review_text);
             nameReviewer = (TextView) v.findViewById(R.id.name_reviewer);
-            ratings = (TextView) v.findViewById(R.id.rating);
+            ratings = (RatingBar) v.findViewById(R.id.rating);
         }
     }
 
@@ -72,6 +73,6 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
         //Make the profile image round
         holder.textReview.setText(items.get(position).get("Review").toString());
         holder.nameReviewer.setText(items.get(position).get("ReviewerName").toString());
-        holder.ratings.setText(items.get(position).get("Rating").toString());
+        holder.ratings.setRating(Float.parseFloat(items.get(position).get("Rating").toString()));
     }
 }

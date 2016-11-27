@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -22,8 +23,10 @@ public class AddReview extends Fragment {
     ParseUser currentUser;
     String User;
 
-    EditText rating;
     EditText review;
+    RatingBar rating;
+
+    float numStars;
 
     Button cancel;
     Button save;
@@ -38,19 +41,26 @@ public class AddReview extends Fragment {
         User = bundle.getString("Id");
 
         //Getting the xml elements
-        rating = (EditText) rLayout.findViewById(R.id.number_rating);
+        rating = (RatingBar) rLayout.findViewById(R.id.ratingBar);
         review = (EditText) rLayout.findViewById(R.id.text_review);
 
         save = (Button) rLayout.findViewById(R.id.btnSave);
         cancel = (Button) rLayout.findViewById(R.id.btnCancel);
         currentUser = ParseUser.getCurrentUser();
 
+        rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            public void onRatingChanged(RatingBar ratingBar, float rate,
+                                        boolean fromUser) {
+                numStars = rate;
+            }
+        });
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //Only save the review if there is something on the edit texts of rating and review
-                if (rating.getText().length() > 0 && review.getText().length() > 0) {
+                //Only save the review if there is something on the edit text of review
+                if (review.getText().length() > 0) {
                     //Create new review object
                     ParseObject reviewObj = new ParseObject("Reviews");
                     //Add the id of the user that is being reviewed to the new review object
@@ -60,7 +70,7 @@ public class AddReview extends Fragment {
                         reviewObj.put("ReviewerName", currentUser.getUsername());
                     }
                     reviewObj.put("Review", review.getText().toString());
-                    reviewObj.put("Rating", Integer.parseInt(rating.getText().toString()));
+                    reviewObj.put("Rating", Math.round(numStars));
                     reviewObj.saveInBackground();
                 }
                 //Go back to the previous fragment

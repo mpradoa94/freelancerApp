@@ -22,16 +22,19 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/name_reviewer"/>
 
-            <TextView
+            <RatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rating"
-                android:layout_below="@+id/name_reviewer"/>
+                android:isIndicator="true"
+                android:layout_below="@+id/name_reviewer"
+                style="?android:attr/ratingBarStyleSmall"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/review_text"
+                android:layout_marginTop="10dp"
                 android:layout_below="@+id/rating"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
