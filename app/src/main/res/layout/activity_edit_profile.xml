@@ -87,13 +87,6 @@
 
                         </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/header_ratings"
-                            android:textColor="#FF909090"
-                            android:text="Ratings: "/>
-
                     </LinearLayout>
 
                     <HorizontalScrollView
