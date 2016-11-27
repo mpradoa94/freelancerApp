@@ -28,6 +28,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,8 +61,11 @@ public class ProfileOther extends Fragment {
     List<ParseUser> users;
 
     Button addReview;
+    int ratingAvg;
 
     String User;
+
+    RatingBar ratings;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -76,6 +80,8 @@ public class ProfileOther extends Fragment {
             e.printStackTrace();
         }
 
+        ratingAvg = 0;
+
         recyclerViewSkills = (RecyclerView) rLayout.findViewById(R.id.list_skills);
         recyclerViewReviews = (RecyclerView) rLayout.findViewById(R.id.list_reviews);
 
@@ -89,6 +95,8 @@ public class ProfileOther extends Fragment {
         occupation = (TextView) rLayout.findViewById(R.id.header_occupation);
 
         addReview = (Button) rLayout.findViewById(R.id.addReviewbtn);
+
+        ratings = (RatingBar) rLayout.findViewById(R.id.header_rating_bar);
 
         //Make the profile image round
         ImageView profileImg = (ImageView)rLayout.findViewById(R.id.profile_image);
@@ -147,6 +155,11 @@ public class ProfileOther extends Fragment {
             }
             if(reviews != null) {
                 mAdapter2 = new ReviewsAdapter(reviews);
+                for (int i = 0; i < reviews.size(); i++){
+                    ratingAvg += (int) reviews.get(i).get("Rating");
+                }
+                ratingAvg = Math.round(ratingAvg/reviews.size());
+                ratings.setRating(ratingAvg);
             }
 
             mAdapter = new SkillsAdapter(skills);
