@@ -67,6 +67,8 @@ public class ProfileOther extends Fragment {
 
     RatingBar ratings;
 
+    Button btnContact;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FragmentActivity faActivity = (FragmentActivity) super.getActivity();
@@ -111,6 +113,41 @@ public class ProfileOther extends Fragment {
         //Getting user id from the list
         Bundle bundle = getArguments();
         User = bundle.getString("Id");
+
+        // Button to show the contact information
+        btnContact = (Button) rLayout.findViewById(R.id.contactInfobtn);
+
+        btnContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder DialogContactInfo = new AlertDialog.Builder(getActivity());
+
+                Object phn = users.get(0).get("telephone");
+                Object em = users.get(0).get("email");
+
+                DialogContactInfo.setTitle("Contact Information");
+                DialogContactInfo.setIcon(R.mipmap.ic_launcher);
+
+                if(phn != null) {
+                    String phoneNumber = phn.toString();
+                    DialogContactInfo.setMessage("Phone number: " + phoneNumber);
+                }
+                else {
+                    DialogContactInfo.setMessage("No phone number available.");
+                }
+
+                if(em != null) {
+                    String eMail = em.toString();
+                    DialogContactInfo.setMessage("Email: " + eMail);
+                }
+                else {
+                    DialogContactInfo.setMessage("No email available.");
+                }
+
+                AlertDialog MyDialog = DialogContactInfo.create();
+                MyDialog.show();
+            }
+        });
 
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereEqualTo("objectId", User);

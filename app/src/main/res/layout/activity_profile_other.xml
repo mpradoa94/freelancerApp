@@ -234,7 +234,8 @@
             android:background="#70dc68"
             android:textColor="#FFFFFFFF"
             android:textSize="10dp"
-            />
+            android:clickable="false"
+            android:id="@+id/contactInfobtn"/>
     </RelativeLayout>
 
 </RelativeLayout>
