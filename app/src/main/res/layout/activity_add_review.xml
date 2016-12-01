@@ -33,7 +33,7 @@
         android:text="Review"
         android:textSize="15dp"
         android:textColor="#6aa84f"
-        android:layout_below="@+id/number_rating"/>
+        android:layout_below="@+id/ratingBar"/>
 
     <EditText
         android:layout_width="match_parent"
