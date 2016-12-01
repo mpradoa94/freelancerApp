@@ -112,7 +112,7 @@ public class MenuActivity extends AppCompatActivity implements NavigationView.On
             ParseUser currentUser = ParseUser.getCurrentUser();
             invalidateOptionsMenu();
             Toast.makeText(getApplicationContext(), "Good bye...", Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(MenuActivity.this, login.class);
+            Intent intent = new Intent(MenuActivity.this, register.class);
             startActivity(intent);
         }
 
